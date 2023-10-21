@@ -72,7 +72,8 @@ def pull(image_name: str, tag: str="latest"):
     elif not os.path.isdir(config.IMAGES_PATH):
         print(f"{config.IMAGES_PATH} must be a directory", file=sys.stderr)
 
-    with open(f"{config.IMAGES_PATH}/{image_name}-{tag}.tar", "a+b") as output_file:
+    # Separate to functions - maybe even block above
+    with open(f"{config.IMAGES_PATH}/{image_name}-{tag}.tar", "ab") as output_file:
         for layer_digest in unique_layers:
             layer_chunk_request = requests.get(urljoin(config.API_URL, f"{image_name}/blobs/{layer_digest}"), headers=headers)
 
