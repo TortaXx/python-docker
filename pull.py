@@ -68,7 +68,7 @@ def pull(image_name: str, tag: str="latest"):
 
 
     if not os.path.exists(config.IMAGES_PATH):
-        os.mkdir(config.IMAGES_PATH)
+        os.makedirs(config.IMAGES_PATH)
     elif not os.path.isdir(config.IMAGES_PATH):
         print(f"{config.IMAGES_PATH} must be a directory", file=sys.stderr)
 
